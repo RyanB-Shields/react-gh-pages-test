@@ -2,11 +2,6 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## `Requirments`
-
-react-yearly-calendar
-npm install react-yearly-calendar
-
 ## Available Scripts
 
 In the project directory, you can run:
