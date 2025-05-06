@@ -4,8 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## `Requirments`
 
-react-calendar
-npm install react-calendar
+react-yearly-calendar
+npm install react-yearly-calendar
 
 ## Available Scripts
 

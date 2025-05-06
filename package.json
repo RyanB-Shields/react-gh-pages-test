@@ -13,6 +13,7 @@
     "react-dom": "^19.1.0",
     "react-gh-pages-test": "file:",
     "react-scripts": "5.0.1",
+    "react-yearly-calendar": "^1.2.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
