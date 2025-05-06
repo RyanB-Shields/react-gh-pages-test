@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/react-gh-pages-test/static/css/main.f855e6bc.css",
-    "main.js": "/react-gh-pages-test/static/js/main.37c5793f.js",
+    "main.css": "/react-gh-pages-test/static/css/main.ce9c413f.css",
+    "main.js": "/react-gh-pages-test/static/js/main.06e84934.js",
     "static/js/453.24ff6461.chunk.js": "/react-gh-pages-test/static/js/453.24ff6461.chunk.js",
+    "static/media/worldline-mint-horizontal.png": "/react-gh-pages-test/static/media/worldline-mint-horizontal.e14dbc5291743fda509a.png",
     "index.html": "/react-gh-pages-test/index.html",
-    "main.f855e6bc.css.map": "/react-gh-pages-test/static/css/main.f855e6bc.css.map",
-    "main.37c5793f.js.map": "/react-gh-pages-test/static/js/main.37c5793f.js.map",
+    "main.ce9c413f.css.map": "/react-gh-pages-test/static/css/main.ce9c413f.css.map",
+    "main.06e84934.js.map": "/react-gh-pages-test/static/js/main.06e84934.js.map",
     "453.24ff6461.chunk.js.map": "/react-gh-pages-test/static/js/453.24ff6461.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f855e6bc.css",
-    "static/js/main.37c5793f.js"
+    "static/css/main.ce9c413f.css",
+    "static/js/main.06e84934.js"
   ]
 }
