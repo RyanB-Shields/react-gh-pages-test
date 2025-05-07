@@ -18,6 +18,7 @@ function CalendarDays(props) {
       month: firstDayOfMonth.getMonth(),
       number: firstDayOfMonth.getDate(),
       selected: (firstDayOfMonth.toDateString() === props.day.toDateString()),
+      today: (firstDayOfMonth.toDateString() === new Date().toDateString()),
       year: firstDayOfMonth.getFullYear()
     }
 
@@ -35,6 +36,7 @@ function CalendarDays(props) {
                 "calendar-day" + 
                 (day.currentMonth ? " current" : "") + 
                 (day.selected ? " selected" : "") + 
+                (day.today ? " today" : "") +
                 (isBankHoliday ? " bank-holiday" : "")
               }
               onClick={() => props.changeCurrentDay(day)}
