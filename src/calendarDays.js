@@ -28,12 +28,20 @@ function CalendarDays(props) {
     <div className="table-content">
       {
         currentDays.map((day) => {
+          const isBankHoliday = props.bankHolidays.includes(day.date.toDateString());
           return (
-            <div className={"calendar-day" + (day.currentMonth ? " current" : "") + (day.selected ? " selected" : "")}
-                  onClick={() => props.changeCurrentDay(day)}>
+            <div 
+              className={
+                "calendar-day" + 
+                (day.currentMonth ? " current" : "") + 
+                (day.selected ? " selected" : "") + 
+                (isBankHoliday ? " bank-holiday" : "")
+              }
+              onClick={() => props.changeCurrentDay(day)}
+            >
               <p>{day.number}</p>
             </div>
-          )
+          );
         })
       }
     </div>

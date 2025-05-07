@@ -103,3 +103,7 @@
     color: #cc0000;
     font-weight: bold;
   }
+
+  .calendar-day.bank-holiday {
+    background-color: yellow;
+  }

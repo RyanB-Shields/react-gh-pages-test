@@ -3,6 +3,7 @@ import CalendarDays from './calendarDays';
 import './calendar.css'
 
 export default class Calendar extends Component {
+
   constructor() {
     super();
 
@@ -26,6 +27,21 @@ export default class Calendar extends Component {
   previousMonth = () => {
     this.setState({ currentDay: new Date(this.state.currentDay.setMonth(this.state.currentDay.getMonth() - 1)) });
   }
+
+  // Fetching Bank Holidays from the UK Government API
+  BANK_HOLIDAYS_API = 'https://www.gov.uk/bank-holidays.json';
+  componentDidMount = async () => {
+    await this.getBankHols()
+  }
+
+  getBankHols = async () => {
+    const response = await fetch(this.BANK_HOLIDAYS_API);
+    const data = await response.json();
+    this.setState({
+        bankHolidays: data['england-and-wales'].events.map(event => new Date(event.date).toDateString())
+    });
+  }
+  
 
   render() {
     return (
@@ -56,7 +72,11 @@ export default class Calendar extends Component {
               })
             }
           </div>
-          <CalendarDays day={this.state.currentDay} changeCurrentDay={this.changeCurrentDay} />
+          <CalendarDays 
+            day={this.state.currentDay} 
+            changeCurrentDay={this.changeCurrentDay} 
+            bankHolidays={this.state.bankHolidays || []} 
+          />
         </div>
       </div>
     )
