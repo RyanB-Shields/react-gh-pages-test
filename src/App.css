@@ -1,10 +1,5 @@
 /* App.css stylesheet  */
 
-/* global styles */
-*{
-  padding : 5px;
-}
-
 /* WL Logo */
 .logo {
   height: 50px;
@@ -14,12 +9,4 @@
 .title {
   font-size: 50px;
   text-align: center;
-}
-
-/* Calendar */
-.calendar-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px;
 }
