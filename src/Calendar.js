@@ -19,12 +19,12 @@ export default class Calendar extends Component {
     this.setState({ currentDay: new Date(day.year, day.month, day.number) });
   }
 
-  nextDay = () => {
-    this.setState({ currentDay: new Date(this.state.currentDay.setDate(this.state.currentDay.getDate() + 1)) });
+  nextMonth = () => {
+    this.setState({ currentDay: new Date(this.state.currentDay.setMonth(this.state.currentDay.getMonth() + 1)) });
   }
 
-  previousDay = () => {
-    this.setState({ currentDay: new Date(this.state.currentDay.setDate(this.state.currentDay.getDate() - 1)) });
+  previousMonth = () => {
+    this.setState({ currentDay: new Date(this.state.currentDay.setMonth(this.state.currentDay.getMonth() - 1)) });
   }
 
   render() {
@@ -35,13 +35,13 @@ export default class Calendar extends Component {
             <h2>{this.months[this.state.currentDay.getMonth()]} {this.state.currentDay.getFullYear()}</h2>
           </div>
           <div className="tools">
-            <button onClick={this.previousDay}>
+            <button onClick={this.previousMonth}>
               <span className="material-icons">
                 arrow_back
                 </span>
             </button>
-            <p>{this.months[this.state.currentDay.getMonth()].substring(0, 3)} {this.state.currentDay.getDate()}</p>
-            <button onClick={this.nextDay}>
+            <p>{this.months[this.state.currentDay.getMonth()].substring(0, 3)}</p>
+            <button onClick={this.nextMonth}>
               <span className="material-icons">
                 arrow_forward
                 </span>
