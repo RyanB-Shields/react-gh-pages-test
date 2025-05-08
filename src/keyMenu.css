@@ -4,6 +4,7 @@
 .key-menu-container {
     display: block;
     width: 100%;
+    padding: 10px;
 }
 
 /* All buttons */

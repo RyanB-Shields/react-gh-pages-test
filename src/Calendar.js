@@ -51,40 +51,42 @@ export default class Calendar extends Component {
 
   render() {
     return (
-      <div className="calendar">
-        <div className="calendar-header">
-          <div className="calendar-title">
-            <h2>{this.months[this.state.currentDay.getMonth()]} {this.state.currentDay.getFullYear()}</h2>
-          </div>
-          <div className="tools">
-            <button onClick={this.previousMonth}>
-              <span className="material-icons">
-                arrow_back
-                </span>
-            </button>
-            <p>{this.months[this.state.currentDay.getMonth()].substring(0, 3)}</p>
-            <button onClick={this.nextMonth}>
-              <span className="material-icons">
-                arrow_forward
-                </span>
-            </button>
-          </div>
-        </div>
+      <div className="calendar-container">
         <KeyMenu toggleBankHolidays={this.toggleBankHolidays} />
-        <div className="calendar-body">
-          <div className="table-header">
-            {
-              this.weekdays.map((weekday) => {
-                return <div className="weekday"><p>{weekday}</p></div>
-              })
-            }
+        <div className="calendar">
+          <div className="calendar-header">
+            <div className="calendar-title">
+              <h2>{this.months[this.state.currentDay.getMonth()]} {this.state.currentDay.getFullYear()}</h2>
+            </div>
+            <div className="tools">
+              <button onClick={this.previousMonth}>
+                <span className="material-icons">
+                  arrow_back
+                  </span>
+              </button>
+              <p>{this.months[this.state.currentDay.getMonth()].substring(0, 3)}</p>
+              <button onClick={this.nextMonth}>
+                <span className="material-icons">
+                  arrow_forward
+                  </span>
+              </button>
+            </div>
           </div>
-          <CalendarDays 
-            day={this.state.currentDay} 
-            changeCurrentDay={this.changeCurrentDay} 
-            bankHolidays={this.state.bankHolidays || []}
-            showBankHolidays={this.state.showBankHolidays} // Pass toggle state
-          />
+          <div className="calendar-body">
+            <div className="table-header">
+              {
+                this.weekdays.map((weekday) => {
+                  return <div className="weekday"><p>{weekday}</p></div>
+                })
+              }
+            </div>
+            <CalendarDays 
+              day={this.state.currentDay} 
+              changeCurrentDay={this.changeCurrentDay} 
+              bankHolidays={this.state.bankHolidays || []}
+              showBankHolidays={this.state.showBankHolidays} // Pass toggle state
+            />
+          </div>
         </div>
       </div>
     )
