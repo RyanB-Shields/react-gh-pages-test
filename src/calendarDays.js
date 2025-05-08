@@ -30,6 +30,7 @@ function CalendarDays(props) {
       {
         currentDays.map((day) => {
           const isBankHoliday = props.bankHolidays.includes(day.date.toDateString());
+  
           return (
             <div 
               className={
@@ -37,7 +38,7 @@ function CalendarDays(props) {
                 (day.currentMonth ? " current" : "") + 
                 (day.selected ? " selected" : "") + 
                 (day.today ? " today" : "") +
-                (isBankHoliday ? " bank-holiday" : "")
+                (isBankHoliday && props.showBankHolidays ? " bank-holiday" : "")
               }
               onClick={() => props.changeCurrentDay(day)}
             >
@@ -47,7 +48,7 @@ function CalendarDays(props) {
         })
       }
     </div>
-  )
+  );
 }
 
 export default CalendarDays;

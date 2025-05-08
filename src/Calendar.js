@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CalendarDays from './calendarDays';
+import KeyMenu from './keyMenu.js';
 import './calendar.css'
 
 export default class Calendar extends Component {
@@ -12,7 +13,8 @@ export default class Calendar extends Component {
       'July', 'August', 'September', 'October', 'November', 'December'];
 
     this.state = {
-      currentDay: new Date()
+      currentDay: new Date(),
+      showBankHolidays: true // New state to toggle bank holidays
     }
   }
 
@@ -27,6 +29,10 @@ export default class Calendar extends Component {
   previousMonth = () => {
     this.setState({ currentDay: new Date(this.state.currentDay.setMonth(this.state.currentDay.getMonth() - 1)) });
   }
+
+  toggleBankHolidays = () => {
+    this.setState((prevState) => ({ showBankHolidays: !prevState.showBankHolidays }));
+  };
 
   // Fetching Bank Holidays from the UK Government API
   BANK_HOLIDAYS_API = 'https://www.gov.uk/bank-holidays.json';
@@ -64,6 +70,7 @@ export default class Calendar extends Component {
             </button>
           </div>
         </div>
+        <KeyMenu toggleBankHolidays={this.toggleBankHolidays} />
         <div className="calendar-body">
           <div className="table-header">
             {
@@ -75,7 +82,8 @@ export default class Calendar extends Component {
           <CalendarDays 
             day={this.state.currentDay} 
             changeCurrentDay={this.changeCurrentDay} 
-            bankHolidays={this.state.bankHolidays || []} 
+            bankHolidays={this.state.bankHolidays || []}
+            showBankHolidays={this.state.showBankHolidays} // Pass toggle state
           />
         </div>
       </div>
