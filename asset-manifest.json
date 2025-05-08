@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/react-gh-pages-test/static/css/main.ed2dd1d2.css",
-    "main.js": "/react-gh-pages-test/static/js/main.b27ef67e.js",
+    "main.css": "/react-gh-pages-test/static/css/main.ebc466b5.css",
+    "main.js": "/react-gh-pages-test/static/js/main.3a7ec7c3.js",
     "static/js/453.24ff6461.chunk.js": "/react-gh-pages-test/static/js/453.24ff6461.chunk.js",
     "static/media/worldline-mint-horizontal.png": "/react-gh-pages-test/static/media/worldline-mint-horizontal.e14dbc5291743fda509a.png",
     "index.html": "/react-gh-pages-test/index.html",
-    "main.ed2dd1d2.css.map": "/react-gh-pages-test/static/css/main.ed2dd1d2.css.map",
-    "main.b27ef67e.js.map": "/react-gh-pages-test/static/js/main.b27ef67e.js.map",
+    "main.ebc466b5.css.map": "/react-gh-pages-test/static/css/main.ebc466b5.css.map",
+    "main.3a7ec7c3.js.map": "/react-gh-pages-test/static/js/main.3a7ec7c3.js.map",
     "453.24ff6461.chunk.js.map": "/react-gh-pages-test/static/js/453.24ff6461.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ed2dd1d2.css",
-    "static/js/main.b27ef67e.js"
+    "static/css/main.ebc466b5.css",
+    "static/js/main.3a7ec7c3.js"
   ]
 }
