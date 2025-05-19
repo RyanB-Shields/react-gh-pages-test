@@ -10,7 +10,7 @@ function KeyMenu(props) {
       <button id="bank-hols-btn" className="key-menu-btn" 
         onClick={() => {
           setShow(!show);
-          props.toggleBankHolidays(); // Call the toggle function
+          props.toggleBankHolidays();
         }}
       > Bank Holidays </button>
     </div>
