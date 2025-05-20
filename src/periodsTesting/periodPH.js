@@ -3,32 +3,29 @@ function Periods(props) {
   // Note: Months are 0-indexed in JavaScript
   // April is month 3, March is month 2
 
-  // First period starts on April 1st
-  const firstPeriodStart = new Date(props.day.getFullYear(), 3, 1);  
+  const firstDayOfApril = new Date(props.day.getFullYear(), 3, 1);
+  // const lastDayofApril = new Date(props.day.getFullYear(), 3, 30); 
+  const lastDayOfMarch = new Date(props.day.getFullYear() +1, 2, 31);
   
-  // First period ends on last saturday of April
-  const firstPeriodEnd = new Date(props.day.getFullYear(), 3, 30);
-  firstPeriodEnd.setDate(firstPeriodEnd.getDate() - (firstPeriodEnd.getDay() + 1) % 7);
-
-  //last period ends on last day of March next year
-  const lastPeriodEnd = new Date(props.day.getFullYear() +1, 2, 31); 
-
-  //Empty variables to hold the start and end dates of other periods
-  let periodStart = new Date();
+  let period1Length = 25;
+  let periodStart = new Date(firstDayOfApril);
   let periodEnd = new Date();
   let periods = [];
 
-  //for loop to create period start and end dates and push them to the periods array
+  
+
+  //for loop to create period start and end dates
   for (let period = 1; period <= 13; period++) {
    
     if (period === 1) {
-      periodStart = new Date(firstPeriodStart);
+      periodStart = new Date(firstDayOfApril);
       //should change depending on day of the week can't end on sunday?
-      periodEnd = new Date(firstPeriodEnd);
+      periodEnd = new Date(periodStart);
+      periodEnd.setDate(periodEnd.getDate() + period1Length);
     } else if (period === 13) {
       periodStart = new Date(periodEnd);
       periodStart.setDate(periodStart.getDate() + 1);
-      periodEnd = new Date(lastPeriodEnd);
+      periodEnd = new Date(lastDayOfMarch);
     } else {
       periodStart = new Date(periodEnd);
       periodStart.setDate(periodStart.getDate() + 1);

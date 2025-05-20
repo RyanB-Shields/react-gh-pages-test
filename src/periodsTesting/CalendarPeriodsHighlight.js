@@ -1,3 +1,6 @@
+///Testing Periods Highlight 
+// currenlty does not work
+
 import React, { Component } from 'react';
 import CalendarDays from './calendarDays';
 import KeyMenu from './keyMenu.js';
@@ -15,9 +18,12 @@ export default class Calendar extends Component {
 
     this.state = {
       currentDay: new Date(),
-      showBankHolidays: true 
+      showBankHolidays: true,
+      showPeriodStart: true,
+      showPeriodEnd: true
     }
   }
+
 
   // Calendar Navigation
   changeCurrentDay = (day) => {
@@ -37,7 +43,17 @@ export default class Calendar extends Component {
     this.setState((prevState) => ({ showBankHolidays: !prevState.showBankHolidays }));
   };
 
-  // Fetch Bank Holidays from gov.uk API
+  tooglePeriodStart = () => {
+    this.setState((prevState) => ({ showPeriodStart: !prevState.showPeriodStart }));
+  }
+
+  tooglePeriodEnd = () => {
+    this.setState((prevState) => ({ showPeriodEnd: !prevState.showPeriodEnd }));
+  }
+
+  // Get Calendar data 
+
+  // Get Bank Holidays from gov.uk API
   BANK_HOLIDAYS_API = 'https://www.gov.uk/bank-holidays.json';
   componentDidMount = async () => {
     await this.getBankHols()
@@ -50,12 +66,31 @@ export default class Calendar extends Component {
         bankHolidays: data['england-and-wales'].events.map(event => new Date(event.date).toDateString())
     });
   }
-  
+
+  // Get Periods from periods.js
+  getPeriodStart = () => {
+    const data = Periods;
+    this.setState({
+      periods: data.periods.map(period => new Date(period.start).toDateString())
+    });
+  }
+
+  getPeriodEnd = () => {
+    const data = Periods;
+    this.setState({
+      periods: data.periods.map(period => new Date(period.end).toDateString())
+    });
+  }
+
   // Render the Calendar
   render() {
     return (
       <div className="calendar-container">
-        <KeyMenu toggleBankHolidays={this.toggleBankHolidays} />
+        <KeyMenu 
+          toggleBankHolidays={this.toggleBankHolidays} 
+          togglePeriodStart={this.tooglePeriodStart}
+          togglePeriodEnd={this.tooglePeriodEnd}
+        />
         <div className="calendar">
           <div className="calendar-header">
             <div className="calendar-title">
@@ -88,12 +123,13 @@ export default class Calendar extends Component {
               changeCurrentDay={this.changeCurrentDay} 
               bankHolidays={this.state.bankHolidays || []}
               showBankHolidays={this.state.showBankHolidays}
+              periodStart={this.state.periodStart || []}
+              showPeriodStart={this.state.showPeriodStart} 
+              periodEnd={this.state.periodEnd || []}
+              showperiodEnd={this.state.showPeriodEnd}
+
             />
           </div>
-        </div>
-        <br></br>
-        <div className="periods">
-          <Periods day={this.state.currentDay}/>
         </div>
       </div>
     )
