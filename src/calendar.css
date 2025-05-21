@@ -1,3 +1,6 @@
+/* calendar Stylesheet  */
+
+/* Main Calendar */
 .calendar {
     width: 900px;
     height: 600px;
@@ -27,28 +30,7 @@
   .title h2 {
     margin: auto;
   }
-  
-  .tools {
-    width: 25%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
-  
-  .tools button {
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    background-color: #ffffff;
-    border: none;
-  }
-  
-  .tools button span:hover {
-    color: #99cccc;
-  }
-  
+
   .calendar-body {
     width: 100%;
     flex-grow: 1;
@@ -90,8 +72,32 @@
     right: 10px;
     color: #a6a6a6;
   }
+
+    /* Navigation Menu  */
   
-  .current p {
+  .tools {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .tools button {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border: none;
+  }
+  
+  .tools button span:hover {
+    color: #99cccc;
+  }
+  
+  /* Dates Highlighting */
+   .current p {
     color: #000000;
   }
   
@@ -104,7 +110,17 @@
     color: blue;
     font-weight: bold;
   }
-
-  .calendar-day.bank-holiday {
+  
+  .calendar-day.bank-holidays {
     background-color: yellow;
+  }
+  
+  .calendar-day.periods-start {
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+  }
+
+  .calendar-day.periods-end {
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
   }

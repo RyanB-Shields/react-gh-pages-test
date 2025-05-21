@@ -6,6 +6,9 @@ import './calendar.css'
 
 export default class Calendar extends Component {
 
+
+  // Constructor ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
   constructor() {
     super();
 
@@ -15,11 +18,13 @@ export default class Calendar extends Component {
 
     this.state = {
       currentDay: new Date(),
-      showBankHolidays: true 
+      showBankHolidays: true, 
+      showPeriodsStart: true,
+      showPeriodsEnd: true
     }
   }
 
-  // Calendar Navigation
+  // Calendar Navigation /////////////////////////////////////////////////////////////////////////////////////////////
   changeCurrentDay = (day) => {
     this.setState({ currentDay: new Date(day.year, day.month, day.number) });
   }
@@ -32,10 +37,20 @@ export default class Calendar extends Component {
     this.setState({ currentDay: new Date(this.state.currentDay.setMonth(this.state.currentDay.getMonth() - 1)) });
   }
 
-  // Key Menu Functions
+  // Key Menu Functions ///////////////////////////////////////////////////////////////////////////////////////////
   toggleBankHolidays = () => {
     this.setState((prevState) => ({ showBankHolidays: !prevState.showBankHolidays }));
   };
+
+  togglePeriodsStart = () => {
+    this.setState((prevState) => ({ showPeriodsStart: !prevState.showPeriodsStart }));
+  };
+
+  togglePeriodsEnd = () => {
+    this.setState((prevState) => ({ showPeriodsEnd: !prevState.showPeriodsEnd }));
+  }
+
+  // Get Calendar data /////////////////////////////////////////////////////////////////////////////////////////
 
   // Fetch Bank Holidays from gov.uk API
   BANK_HOLIDAYS_API = 'https://www.gov.uk/bank-holidays.json';
@@ -50,12 +65,31 @@ export default class Calendar extends Component {
         bankHolidays: data['england-and-wales'].events.map(event => new Date(event.date).toDateString())
     });
   }
+
+  // Get Period dates from periods.js
+  getPeriodsStart = () => {
+    const data = Periods(this.state.currentDay);
+    this.setState({
+      periodsStart: data.map(periods => new Date(periods.start).toDateString())
+    });
+  }
+
+  getPeriodsEnd = () => {
+    const data = Periods(this.state.currentDay);
+    this.setState({
+      periodsEnd: data.map(periods => new Date(periods.end).toDateString())
+    });
+  }
   
   // Render the Calendar
   render() {
     return (
       <div className="calendar-container">
-        <KeyMenu toggleBankHolidays={this.toggleBankHolidays} />
+        <KeyMenu 
+          toggleBankHolidays={this.toggleBankHolidays}
+          togglePeriodsStart={this.togglePeriodsStart}
+          togglePeriodsEnd={this.togglePeriodsEnd} 
+        />
         <div className="calendar">
           <div className="calendar-header">
             <div className="calendar-title">
@@ -88,13 +122,14 @@ export default class Calendar extends Component {
               changeCurrentDay={this.changeCurrentDay} 
               bankHolidays={this.state.bankHolidays || []}
               showBankHolidays={this.state.showBankHolidays}
+              periodsStart={this.state.periodsStart || []}
+              showPeriodsStart={this.state.showPeriodsStart}
+              periodsEnd={this.state.periodsEnd || []}
+              showPeriodsEnd={this.state.showPeriodsEnd}
             />
           </div>
         </div>
         <br></br>
-        <div className="periods">
-          <Periods day={this.state.currentDay}/>
-        </div>
       </div>
     )
   }

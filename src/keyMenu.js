@@ -13,6 +13,18 @@ function KeyMenu(props) {
           props.toggleBankHolidays();
         }}
       > Bank Holidays </button>
+      <button id="periods-start-btn" className="key-menu-btn" 
+        onClick={() => {
+          setShow(!show);
+          props.togglePeriodsStart();
+        }} 
+        > Period Start </button>
+      <button id="periods-end-btn" className="key-menu-btn"
+        onClick={() => {
+          setShow(!show);
+          props.togglePeriodsEnd();
+        }} 
+        > Period End </button>
     </div>
   );
 }

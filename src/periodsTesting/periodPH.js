@@ -41,27 +41,6 @@ function Periods(props) {
     });
   }
 
-  return (
-    <div className="periods-list">
-      <table>
-        <thead>
-          <tr>
-            <th>Period</th>
-            <th>Start</th>
-            <th>End</th>
-          </tr>
-        </thead>
-        <tbody>
-          {periods.map((period) => (
-            <tr key={period.period}>
-              <td>{period.period}</td>
-              <td>{period.start}</td>
-              <td>{period.end}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
+  return (periods);
 }
 export default Periods;
