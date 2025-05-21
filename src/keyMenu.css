@@ -9,7 +9,7 @@
 
 /* All buttons */
 .key-menu-btn {
-    border: none;
+    border: 1px solid black;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -21,7 +21,7 @@
 
 /* Indivudal Buttons */
 #bank-hols-btn {
-    background-color: yellow 
+    background-color: yellow;
 }
 
 #periods-start-btn {
