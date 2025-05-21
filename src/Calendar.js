@@ -20,21 +20,38 @@ export default class Calendar extends Component {
       currentDay: new Date(),
       showBankHolidays: true, 
       showPeriodsStart: true,
-      showPeriodsEnd: true
+      showPeriodsEnd: true,
+      periodsStart: [],
+      periodsEnd: []
     }
   }
 
   // Calendar Navigation /////////////////////////////////////////////////////////////////////////////////////////////
   changeCurrentDay = (day) => {
-    this.setState({ currentDay: new Date(day.year, day.month, day.number) });
+    this.setState({ currentDay: new Date(day.year, day.month, day.number) }, () => {
+      this.getPeriodsStart();
+      this.getPeriodsEnd();
+    });
   }
 
   nextMonth = () => {
-    this.setState({ currentDay: new Date(this.state.currentDay.setMonth(this.state.currentDay.getMonth() + 1)) });
+    this.setState(
+      { currentDay: new Date(this.state.currentDay.setMonth(this.state.currentDay.getMonth() + 1)) },
+      () => {
+        this.getPeriodsStart();
+        this.getPeriodsEnd();
+      }
+    );
   }
 
   previousMonth = () => {
-    this.setState({ currentDay: new Date(this.state.currentDay.setMonth(this.state.currentDay.getMonth() - 1)) });
+    this.setState(
+      { currentDay: new Date(this.state.currentDay.setMonth(this.state.currentDay.getMonth() - 1)) },
+      () => {
+        this.getPeriodsStart();
+        this.getPeriodsEnd();
+      }
+    );
   }
 
   // Key Menu Functions ///////////////////////////////////////////////////////////////////////////////////////////
@@ -55,7 +72,9 @@ export default class Calendar extends Component {
   // Fetch Bank Holidays from gov.uk API
   BANK_HOLIDAYS_API = 'https://www.gov.uk/bank-holidays.json';
   componentDidMount = async () => {
-    await this.getBankHols()
+    await this.getBankHols();
+    this.getPeriodsStart();
+    this.getPeriodsEnd();
   }
 
   getBankHols = async () => {
@@ -68,14 +87,14 @@ export default class Calendar extends Component {
 
   // Get Period dates from periods.js
   getPeriodsStart = () => {
-    const data = Periods(this.state.currentDay);
+    const data = Periods({ day: this.state.currentDay });
     this.setState({
       periodsStart: data.map(periods => new Date(periods.start).toDateString())
     });
   }
 
   getPeriodsEnd = () => {
-    const data = Periods(this.state.currentDay);
+    const data = Periods({ day: this.state.currentDay });
     this.setState({
       periodsEnd: data.map(periods => new Date(periods.end).toDateString())
     });

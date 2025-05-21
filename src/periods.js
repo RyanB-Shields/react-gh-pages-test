@@ -36,8 +36,8 @@ function Periods(props) {
     // Add the period start and end dates to the array
     periods.push({
       period: period,
-      start: periodStart.toLocaleDateString(),
-      end: periodEnd.toLocaleDateString()
+      start: periodStart.toDateString(),
+      end: periodEnd.toDateString()
     });
   }
 
