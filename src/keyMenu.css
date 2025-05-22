@@ -25,11 +25,11 @@
 }
 
 #periods-start-btn {
-    border-left: 2px solid black;
-    border-top: 2px solid black;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
 }
 
 #periods-end-btn {
-    border-right: 2px solid black;
-    border-bottom: 2px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
 }
