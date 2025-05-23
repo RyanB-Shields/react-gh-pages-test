@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CalendarDays from './calendarDays';
+import CalendarDays from './calendarDays.js';
 import KeyMenu from './keyMenu.js';
 import Periods from './periods.js';
 import './calendar.css'
